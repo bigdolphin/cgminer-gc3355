@@ -25,12 +25,20 @@ If pll_r/pll_f/pll_od are specified, freq is ignored, and calculated as follows:
 This version of cgminer turns off all BTC cores so that power usage is low.
 On a 5-chip USB miner, power usage is around 10 W. GPUs are also supported.
 
-====== Issues ======
-
-Solve privilege issue on ubuntu:
-
-sudo usermod -G plugdev -a `whoami`
-
+== Compile on RPI ==
+sudo apt update
+sudo apt install -y libudev-dev libcurl4-openssl-dev
+git clone https://github.com/bigdolphin/cgminer-gc3355
+cd cgminer-gc3355
+./configure --enable-scrypt --enable-gridseed
+make -j$(nproc)
+sudo make install
 sudo cp 01-cgminer.rules /etc/udev/rules.d/
+sudo /etc/init.d/udev restart
+cgminer -T --scrypt --gridseed-options=baud=115200,freq=850,chips=40 --hotplug 5 --url=stratum+tcp://litecoinpool.org:8080 --userpass=xxx:yyy
 
-sudo reboot
+====== Issues ======
+Solve privilege issue on ubuntu:
+sudo usermod -G plugdev -a `whoami`
+sudo cp 01-cgminer.rules /etc/udev/rules.d/
+sudo /etc/init.d/udev restart
