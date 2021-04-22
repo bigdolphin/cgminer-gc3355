@@ -26,6 +26,7 @@ This version of cgminer turns off all BTC cores so that power usage is low.
 On a 5-chip USB miner, power usage is around 10 W. GPUs are also supported.
 
 ====== Issues ======
+
 Solve privilege issue on ubuntu:
 sudo usermod -G plugdev -a `whoami`
 sudo cp 01-cgminer.rules /etc/udev/rules.d/
