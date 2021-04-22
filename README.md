@@ -44,8 +44,7 @@ set -e
 case "$1" in  
     start)          
         sleep 60  
-        /usr/local/bin/cgminer -T --scrypt --gridseed-options=baud=115200,freq=850,chips=40 --hotplug 5 \
---url=stratum+tcp://litecoinpool.org:8080 --userpass=xxx:yyy >/var/log/cglog.txt 2>&1 &  
+        /usr/local/bin/cgminer -T --scrypt --gridseed-options=baud=115200,freq=850,chips=40 --hotplug 5 --url=stratum+tcp://litecoinpool.org:8080 --userpass=xxx:yyy >/var/log/cglog.txt 2>&1 &  
         ;;  
 esac
 
