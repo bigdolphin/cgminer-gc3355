@@ -36,6 +36,24 @@ sudo make install
 sudo cp 01-cgminer.rules /etc/udev/rules.d/  
 sudo /etc/init.d/udev restart  
 cgminer -T --scrypt --gridseed-options=baud=115200,freq=850,chips=40 --hotplug 5 --url=stratum+tcp://litecoinpool.org:8080 --userpass=xxx:yyy  
+sudo nano /etc/init.d/cgminerd  
+
+#Content in cgminerd  
+set -e  
+  
+case "$1" in  
+    start)          
+        sleep 60  
+        /usr/local/bin/cgminer -T --scrypt --gridseed-options=baud=115200,freq=850,chips=40 --hotplug 5 \
+--url=stratum+tcp://litecoinpool.org:8080 --userpass=xxx:yyy >/var/log/cglog.txt 2>&1 &  
+        ;;  
+esac
+
+exit 0  
+#End of content  
+  
+sudo chmod +x /etc/init.d/cgminerd  
+sudo ln -s /etc/init.d/cgminerd /etc/rc5.d/S05cgminerd  
 
 ====== Issues ======  
 Solve privilege issue on ubuntu:  
