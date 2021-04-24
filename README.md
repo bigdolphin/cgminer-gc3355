@@ -30,7 +30,7 @@ sudo apt update
 sudo apt install -y libudev-dev libcurl4-openssl-dev  
 git clone https://github.com/bigdolphin/cgminer-gc3355  
 cd cgminer-gc3355  
-./configure --enable-scrypt --enable-gridseed  
+./configure --enable-scrypt --enable-gridseed --enable-cpumining --disable-opencl  
 make -j$(nproc)  
 sudo make install  
 sudo cp 01-cgminer.rules /etc/udev/rules.d/  
