@@ -26,7 +26,7 @@ This version of cgminer turns off all BTC cores so that power usage is low.
 On a 5-chip USB miner, power usage is around 10 W. GPUs are also supported.
 
 == Compile on RPI ==  
-sudo apt update
+sudo apt update  
 sudo apt install -y libudev-dev libcurl4-openssl-dev  
 git clone https://github.com/bigdolphin/cgminer-gc3355  
 cd cgminer-gc3355  
